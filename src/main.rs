@@ -11,6 +11,8 @@ use chrono::Utc;
 use std::path::Path;
 use serde::{Serialize};
 
+extern crate sanitize_filename;
+
 #[tokio::main]
 async fn main() {
     let app = Router::new()
@@ -43,7 +45,7 @@ async fn upload_files(mut multipart: Multipart) -> (StatusCode, Json<FilesUpload
     // Processes each field in the multipart form
     while let Some(field) = multipart.next_field().await.unwrap() {
         if let Some(file_name) = field.file_name() {
-            let file_name: String = file_name.to_string();
+            let file_name: String = sanitize_filename::sanitize(file_name.to_string());
             let file_path: String = format!("{}{}", upload_dir, file_name);
 
             // Extracts the file data
