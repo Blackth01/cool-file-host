@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "d547a729-48a6-457e-ac84-e8d8415155b6",
+		"name": "rust_file_host",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27670126"
+	},
+	"item": [
+		{
+			"name": "upload_files",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3050/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
